@@ -43,7 +43,7 @@ random.seed(10)
 start_time = datetime.now()
 
 
-##Inition population: -----------------------
+# todo - Inition population:--
 def solution_ecoding():
     global Population_list
 
@@ -64,7 +64,7 @@ def solution_ecoding():
             else:
                 assigned_areas.append(solutionPermutation)
                 del solutionPermutation
-                ####--stop here in the reading:
+
             if len(assigned_areas[i]) == 1:
                 s_depot = int(np.random.choice(depot_list))
                 e_depot = int(np.random.choice(depot_list))
@@ -82,7 +82,7 @@ def solution_ecoding():
 
         Population_list.append(solution)
 
-    # ----Below lines of codes computes the Obj. Function
+    # todo - Below lines of codes computes the Obj. Function
     for p in Population_list:
         dis = 0
         s_n = 0
@@ -97,10 +97,10 @@ def solution_ecoding():
     return Population_list
 
 
-###_______________________________________________________________________#
-##_Data files:__ testMatrix_15.csv __ testMatrix_17_v1.csv ---#
-##__ testMatrix_26_v1.csv __ testMatrix_29_v1.csv __ testMatrix_42_v1.csv
-##__ katriMatrix_2.csv __ testMatrix_416_v1 __ testMatrix_416_v1_30_instance.csv
+# todo - The Input Data files:------
+# -- testMatrix_15.csv __ testMatrix_17_v1.csv ---#
+# -- testMatrix_26_v1.csv __ testMatrix_29_v1.csv __ testMatrix_42_v1.csv
+# -- katriMatrix_2.csv __ testMatrix_416_v1 __ testMatrix_416_v1_30_instance.csv
 def readcsvFile():
     data = pd.read_csv('testMatrix_15.csv', index_col=None, skiprows=None)
     return data
@@ -110,8 +110,7 @@ distance = readcsvFile()
 distance_list = np.array(distance, dtype=float)
 
 
-###______________________________________________________#
-###_create an initial population
+# todo - create an initial population
 def init_population():
     pop_list = solution_ecoding()
     for h in range(PopulationSize):
@@ -124,7 +123,7 @@ def init_population():
     return Population
 
 
-###_the fitness function:
+# todo - the fitness function:
 def fitness(h):
     global total
     s_n = 0
@@ -138,7 +137,7 @@ def fitness(h):
     return distance
 
 
-###_Sort population based on fitness:
+# todo - Sort population based on fitness:
 def sort(Pop):
     for i in range(PopulationSize):
         fit_val[i] = fitness(Pop[i, :])
@@ -148,7 +147,7 @@ def sort(Pop):
     return Pop
 
 
-###_compute mu and lambda rates:
+# todo - compute mu and lambda rates:
 def lamda_Mu(PopulationSize):
     for i in range(PopulationSize):
         mu[i] = E - (i) / float((PopulationSize + 1))  # emigration rate
@@ -157,7 +156,7 @@ def lamda_Mu(PopulationSize):
     return Lambda, mu
 
 
-###_the main BBO Algorithm:
+# todo - the main BBO Algorithm:
 def main_BBO(pop):
     global Lambda, Population, mu, Island1, Island2, max_gen, best_fit, Mean, \
         fitness_cmb, total, combind, best_in_gen, Mean_2, Optimal_Route, SelectInd
@@ -192,7 +191,7 @@ def main_BBO(pop):
                             pop[k, total] = fit
 
         pop = sort(pop)
-        ###__Perform mutation - 2-opts - Swap Operator:
+        # todo - Perform mutation - 2-opts - Swap Operator:
         for m in range(PopulationSize):
             if np.random.uniform(0, 1) <= prob_mutation:
                 RN1 = np.random.randint(ProblemDimension)
@@ -239,8 +238,7 @@ if __name__ == "__main__":
     Elapsed_time = finished_time - start_time
     print('Time elapsed - hh:mm:ss.ms - is: {}'.format(Elapsed_time))
 
-#######________________________________________####
-###--Ploting the graph of convergence-----:
+# todo--Ploting the graph of convergence-----:
 fig = plt.figure()
 ax1 = fig.add_subplot(111)
 ax2 = ax1.twinx()
@@ -254,10 +252,8 @@ plt.legend(handles=[line1, line2])
 plt.grid(True)
 plt.savefig('BBO_MmTSP_SolConvergence_Plot.png', dpi=100)
 plt.show()
-###------------------------------------------
 
-
-####_Plotting optimal TUPLE path list and plotting with networkx:_######
+# todo - Plotting optimal TUPLE path list and plotting with networkx:
 # def pairwise(iterable):
 #    a, b = tee(iterable)
 #    next(b, None)
@@ -270,9 +266,8 @@ plt.show()
 #    else:
 #        continue
 # print "Route=>>", Optimal_Route_BBO
-#
-#########################################
-####___Plotting with networkx: ___#
+
+# todo - Plotting with networkx: ___#
 # G = nx.MultiDiGraph()
 # G.add_edges_from(Optimal_Route_BBO)
 #
