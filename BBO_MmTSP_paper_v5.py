@@ -3,15 +3,14 @@
 Created on Fri Oct 13 11:29:59 2017
 @author: Hayford Adjavor
 """
-import networkx as nx
+import random
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import random
-from itertools import tee
 from datetime import datetime
-import profile
-import sys
+import networkx as nx
+
+
 
 PopulationSize = 5
 prob_mutation = 0.01
@@ -266,7 +265,7 @@ plt.show()
 #    else:
 #        continue
 # print "Route=>>", Optimal_Route_BBO
-
+# print "Route=>>", Optimal_Route_BBO
 # todo - Plotting with networkx: ___#
 # G = nx.MultiDiGraph()
 # G.add_edges_from(Optimal_Route_BBO)
